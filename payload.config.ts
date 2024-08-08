@@ -55,6 +55,21 @@ export default buildConfig({
           name: 'content',
           type: 'richText',
         },
+        {
+          name: 'Layout',
+          type: 'blocks',
+          blocks: [
+            {
+              slug: 'Content',
+              fields: [
+                {
+                  name: 'content',
+                  type: 'richText',
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
     {
