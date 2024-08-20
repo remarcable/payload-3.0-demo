@@ -23,6 +23,7 @@
   "dependencies": {
     "@payloadcms/db-mongodb": "3.0.0-beta.80",
     "@payloadcms/db-postgres": "3.0.0-beta.80",
+    "@payloadcms/live-preview-react": "3.0.0-beta.80",
     "@payloadcms/next": "3.0.0-beta.80",
     "@payloadcms/richtext-lexical": "3.0.0-beta.80",
     "@payloadcms/richtext-slate": "3.0.0-beta.80",
@@ -30,6 +31,7 @@
     "babel-plugin-react-compiler": "^0.0.0-experimental-592953e-20240517",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.2",
+    "jsonwebtoken": "^9.0.2",
     "next": "15.0.0-canary.104",
     "payload": "3.0.0-beta.80",
     "react": "19.0.0-rc-06d0b89e-20240801",

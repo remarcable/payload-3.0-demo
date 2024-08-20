@@ -4,17 +4,28 @@ import Link from 'next/link'
 import React from 'react'
 import config from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { RefreshRouteOnSave } from '@/components/RefreshRouteOnSave'
+import { ExitPreviewButton } from '@/components/ExitPreviewButton'
+import { draftMode, headers } from 'next/headers'
 
 const Page = async () => {
+  const { isEnabled: draftModeEnabled } = draftMode()
+
   const payload = await getPayloadHMR({
     config,
   })
 
+  const authResult = draftModeEnabled ? await payload.auth({ headers: headers() }) : undefined
+  const user = authResult?.user
+
   const data = await payload.find({
     collection: 'pages',
+    draft: draftModeEnabled,
+    ...(user ? { overrideAccess: false, user } : {}),
   })
   return (
     <>
+      <RefreshRouteOnSave />
       <main>
         <article>
           <Badge />
@@ -50,6 +61,7 @@ return <Pages data={data} />
             </code>
           </pre>
         </div>
+        {draftModeEnabled ? <ExitPreviewButton /> : 'Draft Mode is disabled'}
         <p>This is the example in action - here is a list of all page titles:</p>
         <ul>
           {data.docs.map((doc) => (

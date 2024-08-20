@@ -44,6 +44,14 @@ export default buildConfig({
       slug: 'pages',
       admin: {
         useAsTitle: 'title',
+        preview: () => '/next/preview?path=%2F',
+      },
+      // Documentation implies that livepreview works without this
+      // But that doesn't seem true:
+      versions: {
+        drafts: {
+          autosave: true,
+        },
       },
       fields: [
         {
@@ -93,6 +101,10 @@ export default buildConfig({
       email: 'dev@payloadcms.com',
       password: 'test',
       prefillOnly: true,
+    },
+    livePreview: {
+      url: 'http://localhost:3000',
+      collections: ['pages'],
     },
   },
   async onInit(payload) {
